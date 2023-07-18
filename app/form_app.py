@@ -48,7 +48,9 @@ form = FormTemplate()
 #   ========================
 #   || Route Section      ||
 #   ========================
-
+@app.route('/', methods = ['GET'])
+def slash_root():
+    return "Ok"
 #   -- Form view call route. --
 @app.route('/form', methods = ['POST'])
 def slack_form():
