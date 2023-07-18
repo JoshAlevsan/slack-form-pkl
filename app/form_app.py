@@ -52,13 +52,13 @@ form = FormTemplate()
 def slash_root():
     return "Ok"
 #   -- Form view call route. --
-@app.route('/form', methods = ['POST'])
+@app.route('/slack-api/form', methods = ['POST'])
 def slack_form():
     response = slack_handler.handle(request)
     return response
 
 #   -- Form submit post route --
-@app.route('/form-submit', methods = ['POST'])
+@app.route('/slack-api/form-submit', methods = ['POST'])
 def slack_submission():
     response = slack_handler.handle(request)
     return response
