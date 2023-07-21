@@ -18,7 +18,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=sqlroot
       - MYSQL_DATABASE=slack_db
-      - MYSQL_ROOT_HOST=%
     volumes:
       - ./slack_db.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:

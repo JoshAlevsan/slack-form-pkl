@@ -27,7 +27,7 @@ CREATE TABLE `form_submissions` (
   `type` varchar(50) NOT NULL,
   `answers` json NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,6 @@ CREATE TABLE `form_submissions` (
 
 LOCK TABLES `form_submissions` WRITE;
 /*!40000 ALTER TABLE `form_submissions` DISABLE KEYS */;
-INSERT INTO `form_submissions` VALUES (1,'command','{\"am_in\": \"123000\", \"reg_id_in\": \"asd\"}');
 /*!40000 ALTER TABLE `form_submissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +59,7 @@ CREATE TABLE `form_templates` (
 
 LOCK TABLES `form_templates` WRITE;
 /*!40000 ALTER TABLE `form_templates` DISABLE KEYS */;
-INSERT INTO `form_templates` VALUES ('command','[{\"type\": \"divider\"}, {\"type\": \"input\", \"label\": {\"text\": \"Registration Identification\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"reg_id_in\"}, {\"type\": \"input\", \"label\": {\"text\": \"Price Amount\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"am_in\"}]'),('success','[{\"type\": \"divider\"}, {\"type\": \"input\", \"label\": {\"text\": \"Registration Identification\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"reg_id_in\"}, {\"type\": \"input\", \"label\": {\"text\": \"Price Amount\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"am_in\"}]'),('testing','[{\"type\": \"divider\"}, {\"type\": \"input\", \"label\": {\"text\": \"Registration Identification\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"reg_id_in\"}, {\"type\": \"input\", \"label\": {\"text\": \"Price Amount\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"am_in\"}]');
+INSERT INTO `form_templates` VALUES ('amount form','[{\"type\": \"input\", \"label\": {\"text\": \"Registration ID\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"registration id\"}, {\"type\": \"input\", \"label\": {\"text\": \"Amount\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\", \"multiline\": true}, \"block_id\": \"amount\"}]'),('blank form','[{\"type\": \"input\", \"label\": {\"text\": \"Input\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\", \"multiline\": true}, \"block_id\": \"input\"}]');
 /*!40000 ALTER TABLE `form_templates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -73,4 +72,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-15 20:15:37
+-- Dump completed on 2023-07-21 11:59:21
