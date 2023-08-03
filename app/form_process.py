@@ -82,6 +82,16 @@ class FormProcess:
         self.channel_id = None
         self.start_time = None
 
+    def update_type_list(self):
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        query = f"SELECT type FROM form_templates;"
+        cursor.execute(query)
+        data_rows = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        self.type_list = [command[0] for command in data_rows]
+
     def set_channel_start_time(self, channel, ts):
         print(f"Process started at {ts}")
         self.channel_id = channel

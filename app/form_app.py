@@ -72,6 +72,7 @@ def slack_submission():
 def selection_message(ack, client, say):
     ack()
 
+    form.update_type_list
     message = say(blocks = form.select_form_type())
     form.set_channel_start_time(channel = message.get('channel'), ts = message.get('ts'))
 
