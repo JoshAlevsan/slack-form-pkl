@@ -7,9 +7,9 @@ services:
       - '5000:5000'
     volumes:
       - ./app:/app
-    depends_on:
-      database:
-        condition: service_healthy
+#    depends_on:
+#      database:
+#        condition: service_healthy
   # database:
   #   image: mysql:latest
   #   container_name: slack-db
