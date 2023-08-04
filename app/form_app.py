@@ -57,7 +57,7 @@ def slack_form():
 
 #   -- Form submit post route --
 @app.route('/slack-api/action', methods = ['POST'])
-def slack_submission():
+def slack_action():
     response = slack_handler.handle(request)
     return response
 
