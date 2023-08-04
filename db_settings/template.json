@@ -1,16 +1,28 @@
 [
     {
-        "type": "input",
-        "block_id": "input",
-        "element": {
-            "type": "plain_text_input",
-            "multiline": true,
-            "action_id": "input"
-        },
-        "label": {
+        "type": "header",
+        "text": {
             "type": "plain_text",
-            "text": "Input",
+            "text": "Selamat Datang! :wave:",
             "emoji": true
-        }
+        },
+        "block_id": "welcome_title"
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "plain_text",
+            "text": " ",
+            "emoji": true
+        },
+        "block_id": "blank_line"
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "Silahkan buka *Form List* di bagian kanan atas untuk pilih dan mulai isi _form_. :blush:"
+        },
+        "block_id": "welcome_message"
     }
 ]
