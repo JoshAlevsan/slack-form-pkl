@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: slack_db
 -- ------------------------------------------------------
--- Server version	8.0.33
+-- Server version	8.1.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,9 +59,13 @@ CREATE TABLE `form_templates` (
 
 LOCK TABLES `form_templates` WRITE;
 /*!40000 ALTER TABLE `form_templates` DISABLE KEYS */;
-INSERT INTO `form_templates` VALUES ('amount form','[{\"type\": \"input\", \"label\": {\"text\": \"Registration ID\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"registration id\"}, {\"type\": \"input\", \"label\": {\"text\": \"Amount\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\", \"multiline\": true}, \"block_id\": \"amount\"}]'),('blank form','[{\"type\": \"input\", \"label\": {\"text\": \"Input\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\", \"multiline\": true}, \"block_id\": \"input\"}]');
+INSERT INTO `form_templates` VALUES ('amount form','[{\"type\": \"input\", \"label\": {\"text\": \"Registration ID\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\"}, \"block_id\": \"registration id\"}, {\"type\": \"input\", \"label\": {\"text\": \"Amount\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\", \"multiline\": true}, \"block_id\": \"amount\"}]'),('blank form','[{\"type\": \"input\", \"label\": {\"text\": \"Input\", \"type\": \"plain_text\", \"emoji\": true}, \"element\": {\"type\": \"plain_text_input\", \"action_id\": \"input\", \"multiline\": true}, \"block_id\": \"input\"}]'),('init','[{\"text\": {\"text\": \":wave:  Selamat Datang!\", \"type\": \"plain_text\", \"emoji\": true}, \"type\": \"header\", \"block_id\": \"front_header\"}, {\"text\": {\"text\": \" \", \"type\": \"plain_text\", \"emoji\": true}, \"type\": \"section\", \"block_id\": \"empty_line\"}, {\"text\": {\"text\": \"Segera buka *Form List* pada bagian kanan atas untuk memilih dan mulai mengisi _form_!  \", \"type\": \"mrkdwn\"}, \"type\": \"section\", \"accessory\": {\"type\": \"image\", \"alt_text\": \"form_image\", \"image_url\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvectorified.com%2Fimages%2Ffill-form-icon-30.png&f=1&nofb=1&ipt=968c3ccb3f8ded999bd761585c7d0ddd86a1a10960f4a439fa7d5a2c2565acea&ipo=images\"}}, {\"type\": \"divider\"}, {\"type\": \"context\", \"elements\": [{\"text\": \"Developed by *Biznet Networks*\", \"type\": \"mrkdwn\"}]}]');
 /*!40000 ALTER TABLE `form_templates` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'slack_db'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -72,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-21 11:59:21
+-- Dump completed on 2023-08-04 15:14:20
