@@ -4,7 +4,7 @@
 
 # import json
 from dotenv import dotenv_values
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flaskext.mysql import MySQL
 #   from flask_mysqldb import MySQL
 from slack_bolt import App
@@ -42,12 +42,7 @@ slack_handler = SlackRequestHandler(slack)
 #   -- Connection check. --
 @app.route('/', methods = ['GET'])
 def slash_root():
-    return "200 OK"
-
-@app.route('/slack-api/events', methods = ['POST'])
-def slack_events():
-    response = slack_handler.handle(request)
-    return response
+    return render_template("conn_response.html")
 
 #   -- Form view call route. --
 @app.route('/slack-api/form', methods = ['POST'])
