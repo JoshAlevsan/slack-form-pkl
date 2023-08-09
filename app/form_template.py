@@ -13,7 +13,7 @@ app.config['MYSQL_DATABASE_DB'] = config['MYSQL_LOCAL_DB']
 app.config['MYSQL_DATABASE_PASSWORD'] = config['MYSQL_LOCAL_PASSWORD']
 mysql = MySQL(app)
 
-class FormProcess:
+class FormTemplate:
     def __init__(self):
         #   -- Open Database Connection. --
         conn = mysql.connect()

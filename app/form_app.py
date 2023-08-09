@@ -9,7 +9,7 @@ from flaskext.mysql import MySQL
 #   from flask_mysqldb import MySQL
 from slack_bolt import App
 from slack_bolt.adapter.flask import SlackRequestHandler
-from form_process import FormProcess
+from form_template import FormTemplate
 from form_submission import FormSubmission
 
 
@@ -62,18 +62,20 @@ def slack_action():
 #   || Event Section      ||
 #   ========================
 
-#   -- Form Select Event --
+#   -- Form Initialize Event --
 @slack.command("/form")
 def init(ack, body, client):
     ack()
 
     global current_form
-    current_form = FormProcess()
+    current_form = FormTemplate()
     client.views_open(
 		trigger_id = body['trigger_id'],
 		view = current_form.create_form('init')
 	)
 
+
+#   -- Form Select Event --
 @slack.action("type_list")
 def select_form(ack, body, client):
     ack()
