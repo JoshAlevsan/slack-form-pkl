@@ -1,4 +1,4 @@
-/app/.form_env
+/.form_env
 /app/__pycache__
 /db_settings
 /.venv
