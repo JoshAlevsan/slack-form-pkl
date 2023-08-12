@@ -1,22 +1,11 @@
-#   ========================
-#   || Library Imports    ||
-#   ========================
-
-# import json
 from dotenv import dotenv_values
-from flask import Flask, request, render_template
+from flask import Flask, request
 from flaskext.mysql import MySQL
-#   from flask_mysqldb import MySQL
 from slack_bolt import App
 from slack_bolt.adapter.flask import SlackRequestHandler
-from form_template import FormTemplate
-from form_submission import FormSubmission
+from app.form_process import FormProcess
+from app.form_submission import FormSubmission
 
-
-
-#   ========================
-#   || Config Loading     ||
-#   ========================
 config = dotenv_values(".form_env")
 
 
@@ -25,7 +14,7 @@ config = dotenv_values(".form_env")
 #   || App Initialization ||
 #   ========================
 
-current_form = None
+form = FormProcess()
 app = Flask(__name__)
 slack = App(
     token = config["SLACK_BOT_TOKEN"],
@@ -42,7 +31,12 @@ slack_handler = SlackRequestHandler(slack)
 #   -- Connection check. --
 @app.route('/', methods = ['GET'])
 def slash_root():
-    return render_template("conn_response.html")
+    return "200 OK"
+
+@app.route('/slack-api/events', methods = ['POST'])
+def slack_events():
+    response = slack_handler.handle(request)
+    return response
 
 #   -- Form view call route. --
 @app.route('/slack-api/form', methods = ['POST'])
@@ -51,8 +45,8 @@ def slack_form():
     return response
 
 #   -- Form submit post route --
-@app.route('/slack-api/action', methods = ['POST'])
-def slack_action():
+@app.route('/slack-api/form-submit', methods = ['POST'])
+def slack_submission():
     response = slack_handler.handle(request)
     return response
 
@@ -62,29 +56,22 @@ def slack_action():
 #   || Event Section      ||
 #   ========================
 
-#   -- Form Initialize Event --
-@slack.command("/form")
-def init(ack, body, client):
-    ack()
-
-    global current_form
-    current_form = FormTemplate()
-    client.views_open(
-		trigger_id = body['trigger_id'],
-		view = current_form.create_form('init')
-	)
-
-
 #   -- Form Select Event --
-@slack.action("type_list")
-def select_form(ack, body, client):
+@slack.command("/form")
+def selection_message(ack, client, say):
     ack()
 
-    selected = f"{body['actions'][0]['selected_option']['value']}"
-    client.views_update(
-		view_id = body["view"]["id"],
-        hash = body["view"]["hash"],
-		view = current_form.create_form(selected)
+    message = say(blocks = form.select_form_type())
+    form.set_channel_start_time(channel = message.get('channel'), ts = message.get('ts'))
+
+@slack.action("type_list")
+def write_form(ack, body, client):
+	ack()
+
+	command = f"{body['actions'][0]['selected_option']['value']}"
+	client.views_open(
+		trigger_id = body['trigger_id'],
+		view = form.create_form(command)
 	)
 
 #   -- Form Submit Event --
@@ -92,18 +79,15 @@ def select_form(ack, body, client):
 def submit_form(ack, view, client):
     ack()
 
-    global current_form
+    msg_channel, msg_ts = form.get_channel_start_time()
+    client.chat_delete(channel = msg_channel, ts = msg_ts)
+
     answers = {}
     input_blocks = view['state']['values']
-    
     for block_id, value_id in input_blocks.items():
-        if block_id == "type_menu":
-            continue
         answers[block_id] = value_id['input']
-    print(answers)
-    results = FormSubmission(current_form, answers)
+    results = FormSubmission(form, answers)
     results.submit_form()
-    current_form = None
 
 
 
