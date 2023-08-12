@@ -1,8 +1,8 @@
 FROM python:slim
 
-WORKDIR /app
+WORKDIR /opt
 
-COPY . .
+COPY . /opt
 RUN pip install -r requirements.txt
 
 EXPOSE 5000

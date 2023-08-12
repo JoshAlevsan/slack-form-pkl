@@ -1,27 +1,28 @@
 version: "3.8"
 services:
-  form_app:
-    build: .
-    container_name: slack-bot
-    ports:
-      - '5000:5000'
-    volumes:
-      - ./app:/app
-  #   depends_on:
-  #     database:
-  #       condition: service_healthy
-  # database:
-  #   image: mysql:latest
-  #   container_name: slack-db
-  #   ports:
-  #     - '3306:3306'
-  #   environment:
-  #     - MYSQL_DATABASE=slack_db
-  #     - MYSQL_ROOT_PASSWORD=mysqlroot
-  #   volumes:
-  #     - ./slack_db.sql:/docker-entrypoint-initdb.d/init.sql
-  #   healthcheck:
-  #     test: ["CMD", "mysqladmin", "ping", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
-  #     interval: 15s
-  #     timeout: 10s
-  #     retries: 5
+        form_app:
+                build: .
+                container_name: slack-bot
+                ports:
+                        - '5000:5000'
+                volumes:
+                        - .:/opt
+#                depends_on:
+#                        database:
+#                                condition: service_healthy
+#        database:
+#                image: mysql:latest
+#                container_name: slack-db
+#                ports:
+#                        - '3306:3306'
+#                environment:
+#                        MYSQL_DATABASE: slack_db
+#                        MYSQL_ROOT_PASSWORD: sqlroot
+#                        MYSQL_ROOT_HOST: '%'
+#                volumes:
+#                        - ./init/slack_db.sql:/docker-entrypoint-initdb.d/init.sql
+#                healthcheck:
+#                        test: ["CMD", "mysqladmin", "ping", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+#                        interval: 15s
+#                        timeout: 10s
+#                        retries: 5
