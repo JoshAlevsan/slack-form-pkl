@@ -8,12 +8,6 @@ from app.form_submission import FormSubmission
 
 config = dotenv_values(".form_env")
 
-
-
-#   ========================
-#   || App Initialization ||
-#   ========================
-
 form = FormProcess()
 app = Flask(__name__)
 slack = App(
