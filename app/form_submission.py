@@ -28,7 +28,7 @@ class FormSubmission:
 
         #   -- Execute SQL Commands --
         #   cursor = mysql.connection.cursor()
-        query = f"INSERT INTO form_submission (type, answers) VALUES ('{self.form.type}', {answers_sql_json});"
+        query = f"INSERT INTO form_submissions (type, answers) VALUES ('{self.form.type}', {answers_sql_json});"
         cursor.execute(query)
         conn.commit()
 
