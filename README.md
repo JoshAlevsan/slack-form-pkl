@@ -1,7 +1,7 @@
 # Slack API
 
 ## Software Requirement
-* Pyhton 3
+* Python 3
 * PIP 3
 * Virtualenv
 
