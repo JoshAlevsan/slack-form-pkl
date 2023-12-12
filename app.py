@@ -61,7 +61,7 @@ def slack_action():
 #   ========================
 #   || Event Section      ||
 #   ========================
-
+ 
 #   -- Form Initialize Event --
 @slack.command("/form")
 def init(ack, body, client):
@@ -100,7 +100,6 @@ def submit_form(ack, view, client):
         if block_id == "type_menu":
             continue
         answers[block_id] = value_id['input']
-    print(answers)
     results = FormSubmission(current_form, answers)
     results.submit_form()
     current_form = None
